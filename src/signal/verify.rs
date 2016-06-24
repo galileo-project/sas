@@ -3,10 +3,10 @@ use state::SASState;
 
 pub fn verify_signal(string: String) ->Result<String, SASState> {
     match string {
-        "start"    => Ok("start"),
-        "restart"  => Ok("restart"),
-        "kill"     => Ok("kill"),
-        "reload"   => Ok("reload"),
+        "start"    => Ok("start".to_string()),
+        "restart"  => Ok("restart".to_string()),
+        "kill"     => Ok("kill".to_string()),
+        "reload"   => Ok("reload".to_string()),
         _          => Err(SASState::SigErr),
     }
 } 

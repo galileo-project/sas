@@ -27,7 +27,7 @@ pub fn start(args: &mut Args) {
     if args.len() <= 0 {
         help();
     }
-    match verify_signal(args.next().unwrap()) {
+    match verify_signal(args.next().unwrap().to_string()) {
         Ok(signal)    => client(signal),
         Err(e)        => exit(e),
     }
