@@ -1,5 +1,4 @@
 /// parse signal string to Signal
-mod signal;
 use self::signal::Signal;
 
 pub fn string_to_signal(signal: String) -> Option<Signal> {
@@ -12,9 +11,9 @@ pub fn string_to_signal(signal: String) -> Option<Signal> {
     }
 }
 
-pub fn signal_to_string(signal: Signal) -> Option(String) {
+pub fn signal_to_string(signal: Signal) -> Option<&str> {
     match signal {
-        Signal::Start   => Some("start"),
+        Signal::Start   => Some("start".to_string()),
         Signal::Restart => Some("restart"),
         Signal::Kill    => Some("kill"),
         Signal::Reload  => Some("reload"),

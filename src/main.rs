@@ -1,8 +1,12 @@
 mod server;
 mod client;
 mod utils;
+mod state;
+mod signal;
+
 use std::env;
 use utils::{help, exit};
+use state::SASState;
 
 fn dispatch (option: String, args: &mut env::Args) {
     if option == "daemon" { // server side
@@ -20,6 +24,6 @@ fn main() {
 
     match args.next() {
         Some(option) => dispatch(option, &mut args),
-        None         => exit(1),
+        None         => exit(SASState::CmdErr),
     }
 }

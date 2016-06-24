@@ -1,12 +1,10 @@
-mod signal;
-mod utils;
-
 use std::env::Args;
 use std::net::TcpStream;
 use std::io::{Read, Write};
 use std::str;
 use signal::{verify_signal};
 use utils::{help, exit};
+use state:: SASState;
 
 
 fn client(msg: String) {
@@ -20,8 +18,8 @@ fn client(msg: String) {
             buff.clear();
         },
         Err(e) => {
-            exit(1);
-        } 
+            exit(SASState::Conn);
+        },
     }
 }
 
@@ -31,6 +29,6 @@ pub fn start(args: &mut Args) {
     }
     match verify_signal(args.next().unwrap()) {
         Ok(signal)    => client(signal),
-        Err(e)        => exit(e);
+        Err(e)        => exit(e),
     }
 }

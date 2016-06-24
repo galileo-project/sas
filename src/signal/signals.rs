@@ -1,4 +1,4 @@
-enum Signal {
+pub enum Signal {
     Start,
     Restart,
     Kill,
