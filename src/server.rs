@@ -1,5 +1,3 @@
-//mod signal;
-
 use std::env::Args;
 use std::net::{TcpListener, TcpStream};
 use std::io::{Write, Read};
@@ -7,8 +5,9 @@ use std::thread;
 use std::str;
 use signal::{Signal, string_to_signal};
 
+
 fn handle_signal(sig_str: String) {
-    let signal: Signal = string_to_signal(&sig_str);
+    let signal = string_to_signal(&sig_str);
 
     match signal {
         Some(Signal::Start)     => println!("strat"),

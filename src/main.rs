@@ -8,12 +8,13 @@ use std::env;
 use utils::{help, exit};
 use state::SASState;
 
+
 fn dispatch (option: String, args: &mut env::Args) {
-    if option == "daemon" { // server side
+    if option == "daemon" {     // server side
         server::start(args);
-    } else if option == "-s" {
+    } else if option == "-s" {  // client side 
         client::start(args);
-    } else {                // client side
+    } else {                    // show help infomation
         help();
     }
 }

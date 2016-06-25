@@ -1,7 +1,8 @@
 /// verify signal
 use state::SASState;
 
-pub fn verify_signal(string: String) ->Result<String, SASState> {
+
+pub fn verify_signal(string: &str) ->Result<String, SASState> {
     match string {
         "start"    => Ok("start".to_string()),
         "restart"  => Ok("restart".to_string()),

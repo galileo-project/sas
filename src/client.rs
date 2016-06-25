@@ -18,7 +18,7 @@ fn client(msg: String) {
             buff.clear();
         },
         Err(e) => {
-            exit(SASState::Conn);
+            exit(SASState::ConnErr);
         },
     }
 }
@@ -27,7 +27,7 @@ pub fn start(args: &mut Args) {
     if args.len() <= 0 {
         help();
     }
-    match verify_signal(args.next().unwrap().to_string()) {
+    match verify_signal(&args.next().unwrap()) {
         Ok(signal)    => client(signal),
         Err(e)        => exit(e),
     }
