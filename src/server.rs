@@ -38,6 +38,6 @@ fn server() {
 }
 
 pub fn start(args: &mut Args) {
-    println!("start server ...");
+    println!("Starting sas daemon ...");
     server();
 }
