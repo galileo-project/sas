@@ -17,7 +17,7 @@ fn client(msg: String) {
             println!("{}", str::from_utf8(&buff[0..rcount]).unwrap());
             buff.clear();
         },
-        Err(e) => {
+        _          => {
             exit(SASState::ConnErr);
         },
     }

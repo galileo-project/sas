@@ -7,13 +7,8 @@ use signal::{Signal, string_to_signal};
 
 
 fn handle_signal(sig_str: &str) {
-    let signal = string_to_signal(sig_str);
-
-    match signal {
-        Some(Signal::Start)     => println!("strat"),
-        Some(Signal::Restart)   => println!("strat"),
+    match string_to_signal(sig_str) {
         Some(Signal::Reload)    => println!("reload"),
-        Some(Signal::Kill)      => println!("kill"),
         None                    => println!("unknown signal"),
     }
 }
