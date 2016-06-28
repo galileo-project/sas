@@ -14,7 +14,7 @@ fn client(msg: String) {
         Ok(mut st) => {
             let wcount = st.write(&msg.as_bytes()).unwrap();
             let rcount = st.read(&mut buff).unwrap();
-            println!("{:?}", str::from_utf8(&buff[0..rcount]).unwrap());
+            println!("{}", str::from_utf8(&buff[0..rcount]).unwrap());
             buff.clear();
         },
         Err(e) => {
@@ -26,9 +26,10 @@ fn client(msg: String) {
 pub fn start(args: &mut Args) {
     if args.len() <= 0 {
         help();
-    }
-    match verify_signal(&args.next().unwrap()) {
-        Ok(signal)    => client(signal),
-        Err(e)        => exit(e),
+    } else {
+        match verify_signal(&args.next().unwrap()) {
+            Ok(signal)    => client(signal),
+            Err(e)        => exit(e),
+        }
     }
 }

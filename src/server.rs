@@ -6,8 +6,8 @@ use std::str;
 use signal::{Signal, string_to_signal};
 
 
-fn handle_signal(sig_str: String) {
-    let signal = string_to_signal(&sig_str);
+fn handle_signal(sig_str: &str) {
+    let signal = string_to_signal(sig_str);
 
     match signal {
         Some(Signal::Start)     => println!("strat"),
@@ -21,7 +21,7 @@ fn handle_signal(sig_str: String) {
 fn handle_client(stream: &mut TcpStream) {
     let mut buff = vec![0u8; 1024];
     let rcount = stream.read(&mut buff).unwrap();
-    println!("{:?}", str::from_utf8(&buff[0..rcount]).unwrap());
+    handle_signal(str::from_utf8(&buff[0..rcount]).unwrap());
 }
 
 fn server() {
@@ -43,6 +43,6 @@ fn server() {
 }
 
 pub fn start(args: &mut Args) {
-    println!("start server");
+    println!("start server ...");
     server();
 }
